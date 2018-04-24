@@ -4,13 +4,16 @@ import {CoursesService} from "./courses.service";
 @Component({
     'selector': 'courses',
     'template': `
-        <h2>{{ title }}</h2>
-        <img src="{{ imgUrl }}">
         <img [src]="imgUrl">
+        <table>
+            <tr>
+                <td [attr.colspan]="colSpan"></td>
+            </tr>
+        </table>
         `
 })
 
 export class CoursesComponent {
-    title = "List of courses";
     imgUrl = "http://lorempixel.com/400/200/";
+    colSpan = 2;
 }
