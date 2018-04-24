@@ -4,25 +4,20 @@ import {CoursesService} from "./courses.service";
 @Component({
     'selector': 'courses',
     'template': `
-
-        <!--Not Recommended-->
-        <input [value]="email" (keyup.enter)="email = $event.target.value; onKeyenter()">
-        
-        <!--Recommended-->
-        <input [(ngModel)]="email" (keyup.enter)="onKeyenter1()">
+            {{ course.title | uppercase }} <br/>
+            {{ course.rating | number:'1.1-2' }} <br/>
+            {{ course.students | number}} <br/>
+            {{ course.price | currency:'AUD':true }} <br/>
+            {{ course.releaseDate | date:'shortDate' }} <br/>
         `
 })
 
 export class CoursesComponent {
-    email = 'me@example.com';
-
-    // Not Recommended
-    onKeyenter() {
-        console.log(this.email);
-    }
-
-    // Recommended
-    onKeyenter1() {
-        console.log(this.email);
+    course = {
+        title: 'The complete angular course',
+        rating: 4.9745,
+        students: 30123,
+        price: 190.15,
+        releaseDate: new Date()
     }
 }
