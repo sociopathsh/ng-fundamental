@@ -4,17 +4,25 @@ import {CoursesService} from "./courses.service";
 @Component({
     'selector': 'courses',
     'template': `
-        <input (keyup.enter)="onKeyenter($event)">
-        <input #email (keyup.enter)="onKeyenter1(email.value)">
+
+        <!--Not Recommended-->
+        <input [value]="email" (keyup.enter)="email = $event.target.value; onKeyenter()">
+        
+        <!--Recommended-->
+        <input [(ngModel)]="email" (keyup.enter)="onKeyenter1()">
         `
 })
 
 export class CoursesComponent {
-    onKeyenter($event) {
-        console.log($event.target.value);
+    email = 'me@example.com';
+
+    // Not Recommended
+    onKeyenter() {
+        console.log(this.email);
     }
 
-    onKeyenter1(email) {
-        console.log(email);
+    // Recommended
+    onKeyenter1() {
+        console.log(this.email);
     }
 }
