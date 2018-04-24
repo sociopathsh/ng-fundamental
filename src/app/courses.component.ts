@@ -4,17 +4,17 @@ import {CoursesService} from "./courses.service";
 @Component({
     'selector': 'courses',
     'template': `
-        <input (keyup)="onKeyup($event)">
-        <input (keyup.enter)="onKeyenter()">
+        <input (keyup.enter)="onKeyenter($event)">
+        <input #email (keyup.enter)="onKeyenter1(email.value)">
         `
 })
 
 export class CoursesComponent {
-    onKeyup($event) {
-        if ($event.keyCode === 13) console.log('Enter was pressed');
+    onKeyenter($event) {
+        console.log($event.target.value);
     }
 
-    onKeyenter() {
-        console.log('Enter was pressed');
+    onKeyenter1(email) {
+        console.log(email);
     }
 }
